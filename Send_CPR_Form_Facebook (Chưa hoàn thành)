@@ -1,0 +1,61 @@
+import requests
+
+class report():
+    def __init__(self, copyright_owner,Address, email_dame, link_fake, link_Dame, giai_thich):
+        self.copyright_owner = copyright_owner
+        self.Address = Address
+        self.email_dame = email_dame
+        self.link_fake = link_fake
+        self.link_Dame = link_Dame
+        self.giai_thich = giai_thich
+        self.s = requests
+        url = 'https://www.facebook.com/ajax/help/contact/submit/page'
+        heardes = {'accept': '*/*',
+                    'accept-encoding': 'gzip, deflate, br',
+                    'accept-language': 'en-US,en;q=0.9',
+                    'content-length': '2202',
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'cookie': 'datr=T3ChY-_l2hJj5LqR2LdJ79WD; wd=543x657',
+                    'referer': 'https://www.facebook.com/help/contact/copyrightform',
+                    'sec-ch-ua': '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
+                    'sec-ch-ua-mobile': '?0',
+                    'sec-ch-ua-platform': '"Windows"',
+                    'sec-fetch-dest': 'empty',
+                    'sec-fetch-mode': 'cors',
+                    'sec-fetch-site': 'same-origin',
+                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+                    'x-fb-lsd': 'AVrxW3dxmaU',
+            }
+
+        json = {'jazoest': '2988',
+        'lsd': 'AVrGWvPWDmg',
+        'copyright_owner': self.copyright_owner,
+        'your_name': self.copyright_owner,
+        'Address': self.Address,
+        'email': self.email_dame,
+        'confirm_email': self.email_dame,
+        'brp_report_id': 'Ignore this field ',
+        'rights_owner_country_routing': 'Vietnam',
+        'reporter_name': self.copyright_owner,
+        'describe_copyrighted_work_me': 'Photo',
+        'Content_type[0]': 'Photo, video or post',
+        'describe_copyrighted_work_me_URLs': self.link_fake,
+        'content_urls': self.link_Dame,
+        'why_reporting_me': 'I appear in this content',
+        'why_reporting_other': self.giai_thich,
+        'Electronic_sig': self.copyright_owner
+        }
+        PARAMS = {'headers':heardes} 
+        r = self.s.get(url= url,params= PARAMS ,  json=json, timeout = 5)
+        print(json)
+        print(PARAMS)
+
+
+
+copyright_owner = ' Trương Công Huy'
+Address = ' Binh Son, QUang Ngai, Vietnam'
+email_dame= 'duongtuyen@gmail.com'
+link_fake = 'Url Fake'
+link_Dame = 'Url Dame'
+giai_thich = 'Giải thích đi'
+form_report = report(copyright_owner, Address, email_dame, link_fake, link_Dame, giai_thich)
